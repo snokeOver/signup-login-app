@@ -16,16 +16,14 @@ const __dirname = path.resolve();
 const port = process.env.API_PORT || process.env.MY_PORT;
 const socketPort = 3000;
 const mongoDBUrl = process.env.MONGODB_URL;
-const allowedUrls = process.env.ALLOWED_URLS;
-// Split the comma-separated string into an array of origins
-const allowedOrigins = allowedUrls.split(",");
+const allowedUrls = process.env.ALLOWED_URLS_FOR_SOCKET;
 
 // Initialize Express
 const app = Express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: allowedOrigins, // Allow requests from this origin
+    origin: allowedUrls, // Allow requests from this origin
     methods: ["GET", "POST"],
   },
 });
@@ -82,9 +80,9 @@ app.use((err, req, res, next) => {
   });
 });
 
-// Define all other routes
-app.all("*", (req, res) => {
-  res.status(404).send("Resourses you are looking for was not found!");
+// Serve the main HTML file for all other routes
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "/frontend/dist/index.html"));
 });
 
 app.listen(port, () => {

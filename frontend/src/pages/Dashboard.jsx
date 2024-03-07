@@ -13,6 +13,7 @@ import ProfileContact from "../components/nestedComponents/ProfileContact";
 
 const Dashboard = () => {
   const location = useLocation();
+  const socketURL = import.meta.env.VITE_SOCKET_URL;
   const { currentUser } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const [tab, setTab] = useState("");
@@ -26,7 +27,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     // Create a new socket connection when the component mounts
-    const socket = io("http://localhost:3000");
+    const socket = io(socketURL);
 
     // Connect when component mounts
     socket.on("connect", () => {
