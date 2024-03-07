@@ -23,7 +23,7 @@ import { number } from "yup";
 import CountdownTimer from "./CountDownTimmer.jsx";
 
 const ContactEamil = ({ handleUpdate }) => {
-  const baseURL = "http://localhost:443";
+  const baseURL = import.meta.env.VITE_BASE_URL;
   const [openModal, setOpenModal] = useState(false);
   const { currentUser, loading, count, error } = useSelector(
     (state) => state.user

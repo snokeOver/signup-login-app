@@ -8,7 +8,7 @@ import { userActions } from "../redux/userSlice";
 import { useNavigate } from "react-router-dom";
 
 const GAuth = () => {
-  const baseURL = "http://localhost:443";
+  const baseURL = import.meta.env.VITE_BASE_URL;
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const auth = getAuth(app);

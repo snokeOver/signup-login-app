@@ -1,7 +1,7 @@
 import * as Yup from "yup";
 import axios from "axios";
 
-const baseURL = "http://localhost:443";
+const baseURL = import.meta.env.VITE_BASE_URL;
 const lowerCase = /^(?=.*[a-z])/;
 const upperCase = /^(?=.*[A-Z])/;
 const specialChar = /^(?=.*[!@#$%^&*])/;

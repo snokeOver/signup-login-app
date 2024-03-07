@@ -8,7 +8,7 @@ import { themeActions } from "../redux/themeSlice";
 import { userActions } from "../redux/userSlice";
 
 const Header = () => {
-  const baseURL = "http://localhost:443";
+  const baseURL = import.meta.env.VITE_BASE_URL;
   const path = useLocation().pathname;
   const navigate = useNavigate();
   const dispatch = useDispatch();

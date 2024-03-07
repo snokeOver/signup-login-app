@@ -18,7 +18,7 @@ const socketPort = 3000;
 const mongoDBUrl = process.env.MONGODB_URL;
 const allowedUrls = process.env.ALLOWED_URLS;
 // Split the comma-separated string into an array of origins
-const allowedOrigins = allowedUrls.split(",").join(",");
+const allowedOrigins = allowedUrls.split(",");
 
 // Initialize Express
 const app = Express();

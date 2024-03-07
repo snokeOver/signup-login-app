@@ -21,7 +21,7 @@ import { TiTick } from "react-icons/ti";
 import { number } from "yup";
 
 const ContactMobile = ({ updateUserSuccess, handleUpdate }) => {
-  const baseURL = "http://localhost:443";
+  const baseURL = import.meta.env.VITE_BASE_URL;
   const [openModal, setOpenModal] = useState(false);
   const { currentUser } = useSelector((state) => state.user);
   const { theme } = useSelector((state) => state.theme);
